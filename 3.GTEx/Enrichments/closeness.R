@@ -3,7 +3,7 @@
 ##
 
 closeness <- function(file){
-  # Cumulative proportion of intronic sQTLs according to their closeness to the closest exon
+  # Cumulative proportion of intronic sQTLs/non-sQTLs distances to the closest exon
   
   table<-read.table(file)
   distances<-as.factor(table[,2])
