@@ -1,6 +1,7 @@
-###
-####  Automatic plots for sQTLs
-###
+##
+##  Automatic plots for sQTLs
+##  Can be used together with super.plotter.sh or manually selecting the tissue of interest
+##
 
 # args <- commandArgs(TRUE)                     # When using super.plotter.sh
 # 
