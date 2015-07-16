@@ -2,7 +2,6 @@
 ## Plot closeness
 ##
 
-
 closeness <- function(file){
   # Cumulative proportion of intronic sQTLs/non-sQTLs distances to the closest exon
   table<-read.table(file)
@@ -38,3 +37,6 @@ png(args[3])
 plot(type="l",as.character(sqtls.df[1:5001,1]),sqtls.df[1:5001,4],col="darkgreen",ylim=c(0, 1), xlim=c(0,5000), main="Intronic SNPs", xlab="Distance to the closest exon (bp)",ylab="Cumulative proportion")
 lines(type="l",control.df[1:5001,4],col="darkred")
 dev.off()
+
+
+
