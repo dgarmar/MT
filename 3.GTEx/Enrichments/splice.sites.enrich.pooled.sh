@@ -7,6 +7,8 @@
 export WD='/users/rg/dgarrido/run-GTEx1/results'
 export SSITES='/users/rg/dgarrido/enrichments/gtex/all/splice_sites/splice.sites.bed'
 
+# Get datasets and compute enrichment
+
 cd $WD/globalenrich
 
 SQTLS_IN="$(bedtools intersect -a pooled.sqtls.bed -b $SSITES -c | awk '$5>0 {print $4"\t"$5}' | wc -l)"
