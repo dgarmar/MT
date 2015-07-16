@@ -1,7 +1,7 @@
 
 #!/bin/bash
 
-#Iterate over all tissues and plot results (sQTls-sGenes)
+# Iterate over all tissues and plot results (sQTls-sGenes)
 
 export WD='/users/rg/dgarrido/run-GTEx1/results'
 
