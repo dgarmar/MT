@@ -21,7 +21,7 @@ col2 <- colorRampPalette(c("#67001F" ,"#D6604D","#D6604D","#F4A582", "#FDDBC7",
                            "#D1E5F0","#D1E5F0", "#053061"))  
 
 
-## Plot
+## Plot sharing results
 corrplot(t(pi1.fdr1),order="alphabet",method = "color",tl.col="black",cl.lim=c(0.7,1),
          col=col2(200),cl.length=6,is.corr=FALSE,addCoef.col=T)
 
@@ -29,8 +29,6 @@ corrplot(t(pi1.fdr5),order="alphabet",method = "color",tl.col="black",cl.lim=c(0
          col=col2(200),cl.length=6,is.corr=FALSE,addCoef.col=T)
          
       
-
-######## Heatmaps
 
 d<-function(m){
 ## Distance calculation as the correlation between the vectors of pi1 values corresponding to each two cell types
@@ -55,10 +53,12 @@ hashCTCols[[ "T-cells (total RNA)"    ]]<-       "chocolate"
 getPalette = colorRampPalette(c("grey20","grey96"))
 
 colors=sapply(colnames(pi1.fdr5),function (x) hashTissueCols [[ as.character(x) ]]) #  (fdr 5)
+
+## Plot heatmap and clustering
 hv <- heatmap(t(pi1.fdr5),ColSideColors = colors, RowSideColors = colors,distfun=d,col=rev(getPalette(256)), margins = c(5,10),symm=T)
 
 
-####### Cell type specificity
+## Plot cell type specificity
 ctspec.1fdr <- apply(t(pi1.fdr1), 1, function(x) 1-mean(x))
 ctspec.5fdr <- apply(t(pi1.fdr5), 1, function(x) 1-mean(x))
 
