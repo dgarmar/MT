@@ -31,7 +31,8 @@ corrplot(t(pi1.fdr5),order="alphabet",method = "color",tl.col="black",cl.lim=c(0
       
 
 d<-function(m){
-## Distance calculation as the correlation between the vectors of pi1 values corresponding to each two cell types
+  # Distance calculation as the correlation between the vectors of pi1 values 
+  #corresponding to each two cell types
   h <- matrix(0,dim(m)[1],dim(m)[2])
   colnames(h)<-colnames(m)
   rownames(h)<-rownames(m)
@@ -55,7 +56,8 @@ getPalette = colorRampPalette(c("grey20","grey96"))
 colors=sapply(colnames(pi1.fdr5),function (x) hashTissueCols [[ as.character(x) ]]) #  (fdr 5)
 
 ## Plot heatmap and clustering
-hv <- heatmap(t(pi1.fdr5),ColSideColors = colors, RowSideColors = colors,distfun=d,col=rev(getPalette(256)), margins = c(5,10),symm=T)
+hv <- heatmap(t(pi1.fdr5),ColSideColors = colors, RowSideColors = colors,distfun=d,col=rev(getPalette(256)), 
+              margins = c(5,10),symm=T)
 
 
 ## Plot cell type specificity
