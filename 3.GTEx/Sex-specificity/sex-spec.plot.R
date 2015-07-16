@@ -22,9 +22,6 @@ ts.ok<-melt(ts,value.name='tisspec',variable.name = 'Sex',id.vars="tissue")
 
 ## Plot pdf
 
-setwd("~")
-pdf("sex.spec.pdf", height=10, width=10)
-
 p<-ggplot(ts.ok,aes(x=tissue,y=tisspec,fill=Sex))
 p +  geom_bar(subset = .(Sex == "male"), stat ="identity")+
   geom_bar(subset = .(Sex == "female"), stat ="identity")+
