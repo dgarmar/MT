@@ -1,6 +1,6 @@
 
 ##
-## Hierarchical clustering & heatmaps of tissues regarding their sharing pattern
+## Heatmaps and clustering of tissues regarding their sharing pattern
 ##
 
 d<-function(m){
