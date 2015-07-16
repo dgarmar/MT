@@ -5,7 +5,7 @@
 
 # Define varibles
 export WD='/users/rg/dgarrido/run-blueprint/run/results'
-export SHARINGR='/users/rg/dgarrido/sharing/sharing.R'
+export SHARINGR='/users/rg/dgarrido/sharing/sharing.R' # See 3.GTEx/Sharing
 
 # Loop over cell types. Keep track in the console
 cd $WD
