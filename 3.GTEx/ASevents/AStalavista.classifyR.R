@@ -2,8 +2,8 @@
 ## Using AStalavista notation, directly from sQTLseekeR output, obtain the proportion of sQTLs associated to
    each event.
 
-###################################################################################
 args = commandArgs(TRUE)
+
 input.file = args[1] 
 ## Input tab-delimited file with columns 'transId1' and 'transId2', 
 ## the ids of the two transcript for which we want to compare the structure
@@ -18,7 +18,6 @@ out.file = args[3]
 
 out.stats = args[4] 
 ## Output file with a summary of which events were found.
-####################################################################################
 
 trCoord = read.table(tr.file,header=TRUE,as.is=TRUE,fill=TRUE)
 rownames(trCoord) = trCoord$txId
