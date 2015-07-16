@@ -1,5 +1,4 @@
 
-
 ##
 ## Plot the number of cell types among which sQTLs are indeed shared
 ##
