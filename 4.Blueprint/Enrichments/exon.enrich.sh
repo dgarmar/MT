@@ -16,14 +16,14 @@ export EXONS_PROTCOD='/users/rg/dgarrido/enrichments/blueprint/files/protcod.exo
 
 cd $WD
 
-# Loop over tissues
+# Loop over cell types
 
 for i in $( ls -d */ ); do
 	
 	echo $i
 		
-	cd $WD/$i/flux # Put flux instead in case you want to do it
-
+	cd $WD/$i/cufflinks # Also flux
+	
 	grep -F -w -f $PROTCOD sQTLs-sig5.tsv | cut -f2 | sort | uniq > enrichments/exons/sqtls.5fdr.list # Take all the sqtls in protein coding genes 5% fdr
 	grep -F -w -f $PROTCOD sQTLs-sig1.tsv | cut -f2 | sort | uniq > enrichments/exons/sqtls.1fdr.list # Take all the sqtls in protein coding genes 1% fdr
 	grep -F -w -f $PROTCOD sQTLs-all.tsv | cut -f2 | sort | uniq > enrichments/exons/allsnps.list # Take all the SNPs
@@ -48,19 +48,19 @@ for i in $( ls -d */ ); do
 
 
 	comm -23 allsnps.list sqtls.1fdr.list > non-sqtls.1fdr.list
-  grep -F -w -f sqtls.1fdr.list $SNPPOS > sqtls.1fdr.bed
-  grep -F -w -f non-sqtls.1fdr.list $SNPPOS > non-sqtls.1fdr.bed
+        grep -F -w -f sqtls.1fdr.list $SNPPOS > sqtls.1fdr.bed
+	grep -F -w -f non-sqtls.1fdr.list $SNPPOS > non-sqtls.1fdr.bed
 
-  SQTLS_IN="$(bedtools intersect -a sqtls.1fdr.bed -b $EXONS_PROTCOD -c | awk '$5>0 {print $4"\t"$5}' | wc -l)"
-  NON_SQTLS_IN="$(bedtools intersect -a non-sqtls.1fdr.bed -b $EXONS_PROTCOD -c | awk '$5>0 {print $4"\t"$5}' | wc -l)"
+	SQTLS_IN="$(bedtools intersect -a sqtls.1fdr.bed -b $EXONS_PROTCOD -c | awk '$5>0 {print $4"\t"$5}' | wc -l)"
+	NON_SQTLS_IN="$(bedtools intersect -a non-sqtls.1fdr.bed -b $EXONS_PROTCOD -c | awk '$5>0 {print $4"\t"$5}' | wc -l)"
 
-  SQTLS_NB="$(cat sqtls.1fdr.bed | wc -l)"
-  NON_SQTLS_NB="$(cat non-sqtls.1fdr.bed | wc -l)"
+	SQTLS_NB="$(cat sqtls.1fdr.bed | wc -l)"
+	NON_SQTLS_NB="$(cat non-sqtls.1fdr.bed | wc -l)"
 
-  SQTLS_PERC_IN=$(echo "100*$SQTLS_IN/$SQTLS_NB" | bc -l)
-  NON_SQTLS_PERC_IN=$(echo "100*$NON_SQTLS_IN/$NON_SQTLS_NB" | bc -l)
+  	SQTLS_PERC_IN=$(echo "100*$SQTLS_IN/$SQTLS_NB" | bc -l)
+	NON_SQTLS_PERC_IN=$(echo "100*$NON_SQTLS_IN/$NON_SQTLS_NB" | bc -l)
 
-  RATIO1=$(echo "$SQTLS_PERC_IN/$NON_SQTLS_PERC_IN" | bc -l)
-  echo $RATIO1  # Fold enrichment in exons (%sQTLs/%non-sQTLs) at 1% FDR
+	RATIO1=$(echo "$SQTLS_PERC_IN/$NON_SQTLS_PERC_IN" | bc -l)
+  	echo $RATIO1  # Fold enrichment in exons (%sQTLs/%non-sQTLs) at 1% FDR
 
 done
