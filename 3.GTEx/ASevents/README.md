@@ -1,1 +1,1 @@
-##### Characterization of the alternative splcing events associated to sQTLs
+##### Characterization of the alternative splicing events associated to sQTLs
