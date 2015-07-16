@@ -7,7 +7,7 @@ export WD='/users/rg/dgarrido/run-GTEx1/results'
 
 cd $WD
 
-# Loop over tissues
+## Loop over tissues
 
 for i in $( ls -d * ); do
 	echo $i
