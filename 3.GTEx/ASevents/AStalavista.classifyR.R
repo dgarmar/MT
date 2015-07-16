@@ -1,6 +1,6 @@
 
 ## Using AStalavista notation, directly from sQTLseekeR output, obtain the proportion of sQTLs associated to
-   each event.
+## each event.
 
 args = commandArgs(TRUE)
 
