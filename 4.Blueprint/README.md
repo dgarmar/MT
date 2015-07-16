@@ -5,4 +5,4 @@
 
 a) Enrichments in biologically relevant features, b) sharing and tissue specificity, d) landscape of AS events associated to sQTLs
 
-##### 3. Comparison between different transcript quantification tools (Flux-Capacitor and Cufflinks)
+##### 3. Scripts employed to obtain transcript quantifications (using both Flux-Capacitor and Cufflinks)
