@@ -1,1 +1,1 @@
-##### sQTLseekeR run per tissue
+##### sQTLseekeR run i) per tissue and ii) per tissue and gender
