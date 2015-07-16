@@ -1,0 +1,15 @@
+
+##  Template form of a job bash script that would be sent to the cluster.
+
+#$ -N <%= job.name %>
+#$ -cwd
+#$ -o ../../clust_out/$JOB_NAME-$JOB_ID.out
+#$ -e ../../clust_err/$JOB_NAME-$JOB_ID.err
+#$ -l h_rt=<%= resources$walltime %>
+#$ -pe smp <%= resources$cores %>
+#$ -q <%= resources$queue %>
+#$ -V
+#$ -l virtual_free=<%= resources$mem %>
+
+## Run R:
+R CMD BATCH --no-save --no-restore "<%= rscript %>" /dev/stdout
