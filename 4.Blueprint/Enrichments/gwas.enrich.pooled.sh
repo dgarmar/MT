@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# Enrichment of sQTLs (pooled) in GWAS hits and their vicinity (1Kb)
+
 # Define all environment variables
 
 export WD='/users/rg/dgarrido/run-blueprint/run/results'
