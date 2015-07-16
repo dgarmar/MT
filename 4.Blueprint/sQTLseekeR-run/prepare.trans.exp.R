@@ -21,8 +21,8 @@ library(sQTLseekeR)
 
 args <- commandArgs(TRUE) # Command line input (from multi_prepare.trans.exp.R)
 setwd(wd) # Back to the initial WD
-t.index <- as.numeric(args[1]) # Command line input (from multi_prepare.trans.exp.R:tissue)
-q <- as.numeric(args[2])  # Command line input (from multi_prepare.trans.exp.R: gender)
+t.index <- as.numeric(args[1]) # Command line input (from multi_prepare.trans.exp.R:cell type)
+q <- as.numeric(args[2])  # Command line input (from multi_prepare.trans.exp.R: quantifier)
 
 # Input
 if (q==1) {
