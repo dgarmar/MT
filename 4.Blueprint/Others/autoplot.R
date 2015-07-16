@@ -49,35 +49,9 @@ for (x in 1:1277){
   
   rownames(subset.tr) = subset.tr$trId
   
-  
-  #   if (length(table(subset.snp))== 4){
-  #     if (sum(table(subset.snp)[2:4]> sum(table(subset.snp)[2:4])/10) < 3){
-  #       next
-  #     }
-  #   }
-  
   AA = data.frame(t(subset.tr[,names(which(subset.snp==0))]))
   AB = data.frame(t(subset.tr[,names(which(subset.snp==1))]))
   BB = data.frame(t(subset.tr[,names(which(subset.snp==2))]))
-  
-  #   S = dim(AA)[1]+dim(AB)[1]+dim(BB)[1]
-  #   
-  #   if (length(table(subset.snp)) == 3){
-  #     if (sum(table(subset.snp)) == S){
-  #       if (sum(table(subset.snp) > S/10)< 3){
-  #         next
-  #       }
-  #     }else{
-  #       if (sum(table(subset.snp)[2:3] > S/10)< 2){
-  #         next
-  #       }
-  #     }
-  #   }else if (length(table(subset.snp)) == 2){
-  #     if (sum(table(subset.snp) > S/10)< 2){
-  #       next
-  #     }
-  #   }
-  
   
   if (dim(AA)[1]==0){
     L = list(AB,BB)
@@ -108,21 +82,10 @@ for (x in 1:1277){
   p <- list()
   for (geno in L){
     
-    #   if(i==1) {g = "AA"}
-    #   else if (i==2) {g = "AB"}
-    #   else {g = "BB"}
-    
-    
     df<-data.frame()
     
     for (cn in colnames(geno)) {
-      
-      #     if( mean ( geno[,cn], na.rm=TRUE ) < 0.01 ){
-      #       df.tmp <-data.frame(tr=rep("Others",nrow(geno)),y=geno[,cn])
-      
-      #     }else{
       df.tmp <-data.frame(tr=rep(cn,nrow(geno)),y=geno[,cn])
-      #     }
       df<-rbind(df,df.tmp)
     }
     
