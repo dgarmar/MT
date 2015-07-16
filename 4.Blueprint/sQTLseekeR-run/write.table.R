@@ -30,5 +30,6 @@ sQTL.reg <- makeRegistry(id="sQTL", seed=123, file.dir="sQTL")
 res.f = "sQTLs-all.tsv"
 if(file.exists(res.f)) file.remove(res.f)
 tmp = reduceResultsList(sQTL.reg, fun=function(job, res){
-  write.table(res, file=res.f, quote=FALSE, row.names=FALSE, col.names=!file.exists(res.f), append=file.exists(res.f), sep="\t")
+  write.table(res, file=res.f, quote=FALSE, row.names=FALSE, col.names=!file.exists(res.f), 
+              append=file.exists(res.f), sep="\t")
 })
