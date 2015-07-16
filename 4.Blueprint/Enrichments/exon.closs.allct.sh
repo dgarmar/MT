@@ -9,7 +9,7 @@ export EXONS_PROTCOD='/users/rg/dgarrido/enrichments/blueprint/files/protcod.exo
 
 cd $WD
 
-# Loop over tissues
+# Loop over cell types
 
 cd $WD/globalenrich
 
