@@ -1,5 +1,5 @@
 
-## Using AStalavista codes and directly from sQTLseekeR output, obtain the proportion of sQTLs associated to
+## Using AStalavista codes and directly from sQTLseekeR output, obtains the proportion of sQTLs associated to
 ## each event.
 
 args = commandArgs(TRUE)
