@@ -130,21 +130,10 @@
     p <- list()
     for (geno in L){
       
-      #   if(i==1) {g = "AA"}
-      #   else if (i==2) {g = "AB"}
-      #   else {g = "BB"}
-      
-      
       df<-data.frame()
       
       for (cn in colnames(geno)) {
-        
-        #     if( mean ( geno[,cn], na.rm=TRUE ) < 0.01 ){
-        #       df.tmp <-data.frame(tr=rep("Others",nrow(geno)),y=geno[,cn])
-        
-        #     }else{
         df.tmp <-data.frame(tr=rep(cn,nrow(geno)),y=geno[,cn])
-        #     }
         df<-rbind(df,df.tmp)
       }
       
