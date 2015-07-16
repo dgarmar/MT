@@ -80,7 +80,7 @@ submitJobs(prepTE.reg, 1,
 
 ## Take into account that prepare.trans.exp.R is run from 
 ## multi_prepare.trans.exp.R as many times as tissues are analysed . A job 
-## corresponding to each tissue will be generated. Once the execution of 
+## corresponding to each tissue and gender will be generated. Once the execution of 
 ## multi_prepare.trans.exp.R has finished, all the jobs will be running in a 
 ## parallel manner
 
