@@ -35,7 +35,8 @@
   load("../input/snps.samples.RData")
   snps.safe = snps.samples
   
-  setwd("../results/Artery-Coronary") # The tissue you want to explore ##  setwd(sprintf("../results/%s",args[1])) When using super.plotter.sh
+  setwd("../results/Artery-Coronary") # The tissue you want to explore 
+  # OR setwd(sprintf("../results/%s",args[1])) when using super.plotter.sh
   prepTE.reg = makeRegistry(id="prepTE", seed=123, file.dir="prepTE")
   tre.df = loadResult(prepTE.reg, 1)
   sig = read.table("sQTLs-sig1.tsv",header=TRUE,as.is=TRUE,sep="\t" ) #1%FDR
@@ -43,13 +44,11 @@
 # Prepare input files
   colnames(snps.samples)[5:ncol(snps.samples)] = gsub(pattern="GTEX-(.*)", replacement="\\1",perl=TRUE,colnames(snps.samples)[5:ncol(snps.samples)]) 
   
-
-# Preliminar exploratory analysis
+# Exploratory analysis
   plot(sig$md,-log10(sig$qv),col="blue",pch=20) # Initial semi-volcano plot
-  sig.sorted<-sig[order(sig$md,-rank(sig$qv),decreasing=TRUE),] #Sort by fold (decreasing) and p-val (increasing)
+  sig.sorted<-sig[order(sig$md,-rank(sig$qv),decreasing=TRUE),] #Sort by fold md value (decreasing) and p-value (increasing)
 
 # Plot pdf
-  
   pdf("unique.firsts.pdf", paper = "a4r", width = 0, height = 0)
   
   for (x in 1:500){
