@@ -1,11 +1,11 @@
 
 ##
-## Hierarchical clustering & heatmaps of tissues according to the sharing pattern
+## Hierarchical clustering & heatmaps of tissues regarding their sharing pattern
 ##
 
 d<-function(m){
  # Computes the distance between each two tissues as the correlation between the vectors of pi1 values corresponding
- # to each of them, estimates of the degree of sharing
+ # to each of them, estimates of the degree of sharing.
   h <- matrix(0,dim(m)[1],dim(m)[2])
   colnames(h)<-colnames(m)
   rownames(h)<-rownames(m)
