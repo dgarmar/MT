@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Tissue by tissue exon closeness values
+# Tissue by tissue exon closeness computation
 
 # Define all environment variables
 
