@@ -47,7 +47,6 @@ eigenG <- function (interdist,tol=10^-12) {
   
 }
 
-
 generator <- function (dat,scenario,t=0.5,ha=1){
   # Function to simulate genes according to the proposed scenarios
   if (scenario == 0){ # Null hypothesis case
@@ -94,7 +93,7 @@ generator <- function (dat,scenario,t=0.5,ha=1){
 }
 
 HoHa <- function (p0, ha, t) {
-  # Obtains Ha from Ho
+  # Function to obtain Ha from Ho
   points <- list(c(1,0,0),c(0,1,0),c(0,0,1),c(2/3,1/3,0),c(0,1/3,2/3),c(2/3,0,1/3))
   p <- points[[ha]] # To select one of the points to build the straigth line
   return ( (p-p0)*t + p0 ) # Straigth line equation. Given two points and a t value, returns a point over it.
@@ -103,7 +102,7 @@ HoHa <- function (p0, ha, t) {
 }
 
 showAngle <- function (p0=c(0.4,0.3,0.2), ha=1, t=0.5){
-  # Returns the corresponding angle to the different t and p values
+  # Function to compute the corresponding angle given different t and p values
   
   points <- list(c(1,0,0),c(0,1,0),c(0,0,1),c(2/3,1/3,0),c(0,1/3,2/3),c(2/3,0,1/3))
   p <- points[[ha]] # To select one of the points to build the straigth line
@@ -117,19 +116,15 @@ showAngle <- function (p0=c(0.4,0.3,0.2), ha=1, t=0.5){
   
 }
 
-
-
 # Simulation scenario: truncated normal 
 
-sim.tnorm <- function(nb.dim = 3,nb.perm = 10000, m = 0.4){ # One modification by Diego
+sim.tnorm <- function(nb.dim = 3,nb.perm = 10000, m = 0.4){ 
+  # Function to perturb Ho
   sim = NULL
   sumJ = rep(0,nb.perm)
   sdSim <- 0.01*rnorm(n=1,mean=2,sd=0.25)
-  for(i in 1:(nb.dim-1)){    # Calvo modification
+  for(i in 1:(nb.dim-1)){
     simI = NULL
-    
-    #m <- 1/nb.dim
-    #if (i==1) m <- 1.2/nb.dim
     
     if (i!=1) m = (1-m)/2  
     
@@ -146,13 +141,9 @@ sim.tnorm <- function(nb.dim = 3,nb.perm = 10000, m = 0.4){ # One modification b
   for(j in 1:nb.perm){
     sim[nb.dim,j] <- 1- sum(sim[(1:(nb.dim-1)),j])
   }
-  #sim = apply(sim,2,sample)
   return(sim)
 }
 
-# main almost entirely changed,
-# preliminar study of the asymptotic's performance
-# loop of 'nG' genes checked
 
 nG   <- 1000    # number of genes
 nS   <- 3           # number of splicing isoforms
@@ -162,11 +153,10 @@ b    <- 4     # tissues
 n    <- 50    # replicates (individuals) nested to phenotypes
 
 
-nb.mont        <- 10^4  # number of Montecarlo gens per gene
+nb.mont        <- 10^4  # number of Montecarlo generations per gene
 
-nb.perm = 5000#10000
+nb.perm = 5000
 
-# labelA <- factor(rep(c(1:a),each=b*n))
 
 labelA <- gl(a, b*n)                    # df = a-1
 labelB <- gl(b, n, length = a*b*n)      # df = b-1
@@ -175,14 +165,10 @@ labelI <- gl(n,1,length=a*b*n)          # df = a*(c-1)
 #                                    AB   df = (a-1)*(b-1)
 #                                   Error df = a*(b-1)*(n-1)
 
-# Always balanced
 
 eigenStats <- matrix(ncol=3,nrow=nG+1)
 pvals      <- matrix(ncol=3,nrow=nG)
 scores     <- matrix(ncol=3,nrow=nG)
-
-
-# maximum 1000 genes
 
 
 # Parameters to change 
@@ -195,29 +181,18 @@ sc.values  <- 1:3                  # sc, scenario: number of factors (and levels
 # scenario = 2  -->  1 factor (A), 2 levels
 # scenario = 3  -->  2 factors (A,B), 1 level in both
 
-
 iterations <- length(sc.values)*length(m.values)*length(ha.values)*length(t.values) 
 storage <- NULL
 error <- 0
 
 j = 1 # Counter
 
-# # # #Test
-# sc = 3
-# m = 0.4
-# ha = 1
-# t=-0.1
-
 for (sc in sc.values){
   for (m in m.values){
     for (ha in ha.values){
       for (t in t.values){
         
-        for (i in 1:(nG+1)) { # Changes, from 1 to nG +1
-          # for (i in 1:2) { # example1
-          # i=1 # example2
-          # for (i in nG+1){
-          
+        for (i in 1:(nG+1)) { 
           dat <- sim.tnorm(nS,(n*a*b),m)  # dat contains the simulated data under Ho
           if (i != nG+1) dat <- generator (dat, sc,t, ha) # Generate Ha from Ho 
           
@@ -273,14 +248,14 @@ for (sc in sc.values){
           
           if (i == nG+1){break}
           
-          ado <- adonis(as.dist(d) ~ labelA*labelB + labelI %in% labelA, permutations=1) #! Diego modification (only one permutation)
+          ado <- adonis(as.dist(d) ~ labelA*labelB + labelI %in% labelA, permutations=1) 
           
           # always balanced groups
           pseudoFA  <- ado$aov.tab[1,4]     # pseudo F score
           pseudoFB  <- ado$aov.tab[2,4]     # pseudo F score
           pseudoFAB <- ado$aov.tab[3,4]     # pseudo F score
           
-          #  we have to change the F numerator for factor A individuals are random    #!!!! WARNING. Included in scores. Change!
+          #  we have to change the F numerator for factor A, individuals are random  
           pseudoFA  <- ado$aov.tab[1,4]/ado$aov.tab[4,4] # pseudo F score for A
           
           
