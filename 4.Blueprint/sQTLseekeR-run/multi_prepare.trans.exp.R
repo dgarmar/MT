@@ -14,7 +14,7 @@ sample.tissues <- read.table(file="input/samples-celltypes.txt",
 celltypes <- sort(unique(sample.tissues[,2]))
 
 
-## Iterate and run prepare.trans.exp.R for each cell type
+## Iterate and run prepare.trans.exp.R for each cell type and quantifier
 
 t.index=1
 for (celltype in celltypes){
