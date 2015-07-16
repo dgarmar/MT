@@ -28,10 +28,7 @@ pdf("sex.spec.pdf", height=10, width=10)
 p<-ggplot(ts.ok,aes(x=tissue,y=tisspec,fill=Sex))
 p +  geom_bar(subset = .(Sex == "male"), stat ="identity")+
   geom_bar(subset = .(Sex == "female"), stat ="identity")+
-  # coord_flip()
   theme_bw()+
-  # theme(panel.grid.major = element_blank(), 
-  #        panel.grid.minor = element_blank())+
   ggtitle("Sex specificity of sQTLs")+
   theme(plot.title = element_text(size=20, face="bold"))+
   theme(axis.text.x = element_text(angle = 90, hjust = 1))+
