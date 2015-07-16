@@ -10,11 +10,11 @@ export PROTCOD='/users/rg/dgarrido/enrichments/blueprint/files/protcod.list'
 
 cd $WD
 
-# Loop over tissues and get pairs sQTL-sGene
+# Loop over cell types and get pairs sQTL-sGene
 
 for i in $( ls -d */ ); do
 	echo $i
-	cd $WD/$i/flux # Also flux
+	cd $WD/$i/cufflinks # Also flux
 	mkdir sharing
 	cd sharing	
 
