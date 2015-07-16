@@ -1,5 +1,4 @@
 #!/bin/bash
-#!/bin/bash
 
 # Per cell type exon closeness computation
 
