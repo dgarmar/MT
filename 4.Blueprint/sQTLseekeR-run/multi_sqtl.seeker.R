@@ -1,6 +1,6 @@
 
 ##
-##  Iterate through tissue folders to run sqtlseeker.R in a per celltype/quantifier manner
+##  Iterate through cell type folders to run sqtlseeker.R in a per celltype/quantifier manner
 ##
 
 ## WD
