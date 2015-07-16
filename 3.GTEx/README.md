@@ -1,7 +1,7 @@
 
-##### Scripts employed to run sQTLseekeR in GTEx project
+##### 1.Scripts employed to run sQTLseekeR in GTEx project
 
-i) in a per tissue manner and
-ii) in a per tissue and per gender manner
+a) in a per tissue manner and
+b) in a per tissue and per gender manner
 
-##### Scripts employed to perform the downstream analyses
+##### 2.Scripts employed to perform the downstream analyses
