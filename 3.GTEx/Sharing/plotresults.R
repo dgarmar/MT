@@ -1,12 +1,12 @@
 
 ##
-## Plot sQTL sharing and tissue specificity
+## Plot sQTL sharing and tissue specificity results
 ##
 
 ## WD
 setwd("/nfs/users/rg/dgarrido/sharing/results2")
 
-## pi1 values for all tissues
+## load pi1 values for all tissues
 pi1.fdr1<-as.matrix(read.table("pi1.1fdr.txt2",sep="\t", header=TRUE)) # txt3 -> 0.5, txt2 -> 1
 pi1.fdr5<-as.matrix(read.table("pi1.5fdr.txt2",sep="\t", header=TRUE))
 
