@@ -10,6 +10,8 @@ export SNPPOS='/users/rg/dgarrido/enrichments/gtex/all/snps.positions.bed'
 export REF_ANNO='/users/rg/dgarrido/sqtlseeker/GTEx/ref_annot/gencode.v19.annotation.gtf'
 export EXONS_PROTCOD='/users/rg/dgarrido/enrichments/gtex/all/protcod.exons.bed'
 
+# Get datasets and compute enrichment
+
 cd $WD/globalenrich
 
 cut -f1-2 ../*/sQTLs-sig5.tsv | grep -F -w -f $PROTCOD | cut -f 2 | sort | uniq > pooled.sqtls.list # Pooled sqtls for protein coding genes
